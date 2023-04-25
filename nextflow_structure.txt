@@ -1,0 +1,30 @@
+// be nice, tell users how to call your script
+
+enable DSL2
+
+Starting materials: 
+params? fixed variables? first_channel
+
+Processes, first to last
+
+process PROCESS_NAME {
+				input:
+				type alias
+
+				output:
+				type can_vary
+
+				when:
+				(if the thing you write here is false,
+				the process is skipped)
+
+				script:
+				"""
+				echo "write some bash here"
+				"""
+}
+
+workflow {
+		result_ch = PROCESS_NAME(first_channel)
+		result_ch.view{ it }
+}
